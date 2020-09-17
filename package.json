@@ -1,0 +1,9 @@
+{
+    "name": "zerospy2ha",
+    "version": "1.0.0",
+    "description": "Middleman between ZeroSpy and Home Assistant",
+    "main": "index.js",
+    "author": "patfreeman (https://github.org/patfreeman)",
+    "repository": "https://github.com/patfreeman/zerospy2ha",
+    "license": "MIT"
+}
