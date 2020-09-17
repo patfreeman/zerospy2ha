@@ -10,16 +10,18 @@ I wanted to be able to trigger events and notifications about my battery charge 
 
 ### Setup
 1. Home Assitant
-  1. Navigate to your user profile by clicking on your username in the left navigation panel
-  1. Go to the 'Long-Lived Access Tokens' section and create a new token
-  1. Give it a name and click OK
-  1. Copy the token string
+    1. Navigate to your user profile by clicking on your username in the left navigation panel
+    1. Go to the 'Long-Lived Access Tokens' section and create a new token
+    1. Give it a name and click OK
+    1. Copy the token string
+    1. HA will automatically create a sensor once the first SOC is POSTed to the API
 1. Docker
-  1. Build the container: `docker build -t patfreeman/zerospy2ha .`
-  1. Run the container: `docker run --restart=unless-stopped -p 8080:8080 --name zerospy2ha patfreeman/zerospy2ha`
+    1. Edit `index.js` and configure the options const to align with your Home Assistant setup
+    1. Build the container: `docker build -t patfreeman/zerospy2ha .`
+    1. Run the container: `docker run -d --restart=unless-stopped -p 8080:8080 --name zerospy2ha patfreeman/zerospy2ha`
 1. ZeroSpy
-  1. Once configured to auto-connect to your bike
-  1. Click the motorcycle logo in the top bar to get to the Triggers menu
-  1. Add a trigger with the + sign
-  1. I use 0% + n x 1%, to get a trigger for every percentage of charge change
-  1. Set the URL to: `http://<your_docker_server>:8080/?soc=%SOC%`
+    1. Once configured to auto-connect to your bike
+    1. Click the motorcycle logo in the top bar to get to the Triggers menu
+    1. Add a trigger with the + sign
+    1. I use 0% + n x 1%, to get a trigger for every percentage of charge change
+    1. Set the URL to: `http://<your_docker_server>:8080/?soc=%SOC%`
